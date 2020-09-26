@@ -1,0 +1,6 @@
+export const OPEN_GAME='OPEN_GAME'
+export const CLOSE_GAME='CLOSE_GAME'
+export const OPEN_ESPORTS='OPEN_ESPORTS'
+export const CLOSE_ESPORTS='CLOSE_ESPORTS'
+export const OPEN_LOGIN='OPEN_LOGIN'
+export const CLOSE_LOGIN='CLOSE_LOGIN'
