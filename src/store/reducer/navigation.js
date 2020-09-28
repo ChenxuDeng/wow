@@ -3,7 +3,11 @@ import * as actionType from '../action/actionTypes'
 const initialState={
     game:false,
     esports:false,
-    login:false
+    login:false,
+    leftDrawer:false,
+    rightDrawerGames:false,
+    rightDrawerEsports:false,
+    rightDrawer:false
 }
 
 const navigation=(state=initialState,action)=>{
@@ -43,6 +47,36 @@ const navigation=(state=initialState,action)=>{
             return {
                 ...state,
                 login:false
+            }
+        case (actionType.OPEN_LEFT_DRAWER):
+            return {
+                ...state,
+                leftDrawer:true
+            }
+        case (actionType.CLOSE_LEFT_DRAWER):
+            return {
+                ...state,
+                leftDrawer:false
+            }
+        case (actionType.OPEN_RIGHT_DRAWER_GAMES):
+            return {
+                ...state,
+                rightDrawerGames:!state.rightDrawerGames
+            }
+        case (actionType.OPEN_RIGHT_DRAWER_ESPORTS):
+            return {
+                ...state,
+                rightDrawerEsports:!state.rightDrawerEsports
+            }
+        case (actionType.OPEN_RIGHT_DRAWER):
+            return {
+                ...state,
+                rightDrawer:true
+            }
+        case (actionType.CLOSE_RIGHT_DRAWER):
+            return {
+                ...state,
+                rightDrawer:false
             }
         default:
             return state

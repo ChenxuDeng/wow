@@ -4,5 +4,11 @@ export {
     openEsports,
     closeEsports,
     openLogin,
-    closeLogin
+    closeLogin,
+    openLeftDrawer,
+    closeLeftDrawer,
+    openRightDrawerGames,
+    openRightDrawerEsports,
+    openRightDrawer,
+    closeRightDrawer
 } from './navigation'

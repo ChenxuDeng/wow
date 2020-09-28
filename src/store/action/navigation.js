@@ -35,3 +35,39 @@ export const closeLogin=()=>{
         type:actionType.CLOSE_LOGIN
     }
 }
+
+export const openLeftDrawer=()=>{
+    return{
+        type:actionType.OPEN_LEFT_DRAWER
+    }
+}
+
+export const closeLeftDrawer=()=>{
+    return{
+        type:actionType.CLOSE_LEFT_DRAWER
+    }
+}
+
+export const openRightDrawerGames=()=>{
+    return{
+        type:actionType.OPEN_RIGHT_DRAWER_GAMES
+    }
+}
+
+export const openRightDrawerEsports=()=>{
+    return{
+        type:actionType.OPEN_RIGHT_DRAWER_ESPORTS
+    }
+}
+
+export const openRightDrawer=()=>{
+    return{
+        type:actionType.OPEN_RIGHT_DRAWER
+    }
+}
+
+export const closeRightDrawer=()=>{
+    return{
+        type:actionType.CLOSE_RIGHT_DRAWER
+    }
+}
