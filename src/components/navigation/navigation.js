@@ -47,6 +47,7 @@ import blizzardLeft from '../../assets/blizzardLeft.svg'
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from "@material-ui/core/IconButton";
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import Container from "@material-ui/core/Container";
 
 function Navigation(props) {
     const useStyle=makeStyles((theme)=>{
@@ -63,7 +64,7 @@ function Navigation(props) {
             },
             toolBar:theme.mixins.toolbar,
             toolbar:{
-                padding:'0 40px'
+                padding:'0'
             },
             regular:{
                 minHeight:'40px'
@@ -309,6 +310,10 @@ function Navigation(props) {
                 height:'228px',
                 overflow:'hidden',
                 transition:'0.2s'
+            },
+            container:{
+                padding:'0',
+                maxWidth:'1380px'
             }
         }
     })
@@ -569,14 +574,14 @@ function Navigation(props) {
                     onClick={props.openLogin}
                 >
                     我的账户
-                    <ExpandMoreIcon style={{width:'20px'}}/>
+                    {props.login?<KeyboardArrowUpIcon style={{width: '20px'}}/>:<ExpandMoreIcon style={{width: '20px'}}/>}
                 </Button>
             </div>
         </Toolbar>
     </React.Fragment>
 
     const login=<React.Fragment>
-        <Backdrop open={props.login}>
+        <Backdrop open={props.login} style={{zIndex:'10'}}>
             <ClickAwayListener onClickAway={props.closeLogin}>
                 <Paper className={classes.paper} style={{right:'20px',width:'320px',height:'168px'}}>
                     <List style={{padding:'0'}}>
@@ -602,7 +607,7 @@ function Navigation(props) {
     </React.Fragment>
 
     const esportsDropdown=<React.Fragment>
-        <Backdrop open={props.esports}>
+        <Backdrop open={props.esports} style={{zIndex:'10'}}>
         <ClickAwayListener onClickAway={props.closeEsports}>
                 <Paper className={classes.paper} style={{height:'327px'}}>
                     <List>
@@ -658,7 +663,7 @@ function Navigation(props) {
     </React.Fragment>
 
     const gameDropdown=<React.Fragment>
-        <Backdrop open={props.game}>
+        <Backdrop open={props.game} style={{zIndex: '10'}}>
             <ClickAwayListener onClickAway={props.closeGame}>
                 <Paper className={classes.paper} elevation={0}>
                     <List style={{padding:'0'}}>
@@ -774,7 +779,9 @@ function Navigation(props) {
     return (
         <React.Fragment>
             <AppBar elevation={0}>
-                {smMatch?smNav:lgNav}
+                <Container maxWidth={'lg'} classes={{maxWidthLg:classes.container}}>
+                    {smMatch?smNav:lgNav}
+                </Container>
             </AppBar>
             {props.game?gameDropdown:null}
             {props.esports?esportsDropdown:null}

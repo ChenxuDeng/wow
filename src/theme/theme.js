@@ -1,6 +1,6 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 
-const black='#000'
+const black='#0b0d12'
 const grey='rgba(255, 255, 255, 0.7)'
 
 export const theme=createMuiTheme({
