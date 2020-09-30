@@ -312,8 +312,11 @@ function Navigation(props) {
                 transition:'0.2s'
             },
             container:{
-                padding:'0',
-                maxWidth:'1380px'
+                padding:'0 40px',
+                maxWidth:'1600px',
+                [theme.breakpoints.down('sm')]:{
+                    padding:'0'
+                }
             }
         }
     })

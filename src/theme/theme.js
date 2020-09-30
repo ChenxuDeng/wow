@@ -15,5 +15,16 @@ export const theme=createMuiTheme({
         secondary:{
             main:grey
         }
+    },
+    breakpoints:{
+        values:{
+            xs: 0,
+            sm: 600,
+            sl: 720,
+            md: 960,
+            custom: 1080,
+            lg: 1280,
+            xl: 1920,
+        }
     }
 })
