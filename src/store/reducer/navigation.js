@@ -7,7 +7,8 @@ const initialState={
     leftDrawer:false,
     rightDrawerGames:false,
     rightDrawerEsports:false,
-    rightDrawer:false
+    rightDrawer:false,
+    scrolled:false
 }
 
 const navigation=(state=initialState,action)=>{
@@ -77,6 +78,16 @@ const navigation=(state=initialState,action)=>{
             return {
                 ...state,
                 rightDrawer:false
+            }
+        case (actionType.SCROLL_UP):
+            return {
+                ...state,
+                scrolled: true
+            }
+        case (actionType.SCROLL_DOWN):
+            return {
+                ...state,
+                scrolled: false
             }
         default:
             return state

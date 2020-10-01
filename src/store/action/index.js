@@ -10,5 +10,7 @@ export {
     openRightDrawerGames,
     openRightDrawerEsports,
     openRightDrawer,
-    closeRightDrawer
+    closeRightDrawer,
+    scrollUp,
+    scrollDown
 } from './navigation'

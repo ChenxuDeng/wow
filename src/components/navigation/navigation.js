@@ -781,7 +781,7 @@ function Navigation(props) {
 
     return (
         <React.Fragment>
-            <AppBar elevation={0}>
+            <AppBar elevation={0} position={'relative'}>
                 <Container maxWidth={'lg'} classes={{maxWidthLg:classes.container}}>
                     {smMatch?smNav:lgNav}
                 </Container>
@@ -802,7 +802,8 @@ const mapStateToProps=(state)=>{
         leftDrawer:state.navigation.leftDrawer,
         rightDrawerGames:state.navigation.rightDrawerGames,
         rightDrawerEsports:state.navigation.rightDrawerEsports,
-        rightDrawer:state.navigation.rightDrawer
+        rightDrawer:state.navigation.rightDrawer,
+        scrolled:state.navigation.scrolled
     }
 }
 

@@ -71,3 +71,15 @@ export const closeRightDrawer=()=>{
         type:actionType.CLOSE_RIGHT_DRAWER
     }
 }
+
+export const scrollUp=()=>{
+    return{
+        type:actionType.SCROLL_UP
+    }
+}
+
+export const scrollDown=()=>{
+    return{
+        type:actionType.SCROLL_DOWN
+    }
+}
