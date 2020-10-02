@@ -12,5 +12,8 @@ export {
     openRightDrawer,
     closeRightDrawer,
     scrollUp,
-    scrollDown
+    scrollDown,
+    openSecondaryDropdown,
+    closeSecondaryDropdown,
+    clickAway
 } from './navigation'

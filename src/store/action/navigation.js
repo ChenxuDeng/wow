@@ -83,3 +83,21 @@ export const scrollDown=()=>{
         type:actionType.SCROLL_DOWN
     }
 }
+
+export const openSecondaryDropdown=()=>{
+    return{
+        type:actionType.OPEN_SECONDARY_DROPDOWN
+    }
+}
+
+export const closeSecondaryDropdown=()=>{
+    return{
+        type:actionType.CLOSE_SECONDARY_DROPDOWN
+    }
+}
+
+export const clickAway=()=>{
+    return{
+        type:actionType.CLICKAWAY
+    }
+}

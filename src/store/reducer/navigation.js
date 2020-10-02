@@ -8,7 +8,9 @@ const initialState={
     rightDrawerGames:false,
     rightDrawerEsports:false,
     rightDrawer:false,
-    scrolled:false
+    scrolled:false,
+    secondaryDropdown:false,
+    clickAway:false
 }
 
 const navigation=(state=initialState,action)=>{
@@ -88,6 +90,25 @@ const navigation=(state=initialState,action)=>{
             return {
                 ...state,
                 scrolled: false
+            }
+        case (actionType.OPEN_SECONDARY_DROPDOWN):
+            return {
+                ...state,
+                clickAway:false,
+                secondaryDropdown:!state.secondaryDropdown
+
+            }
+        case (actionType.CLOSE_SECONDARY_DROPDOWN):
+            return {
+                ...state,
+                clickAway:false,
+                secondaryDropdown:false
+
+            }
+        case (actionType.CLICKAWAY):
+            return {
+                ...state,
+                clickAway:true
             }
         default:
             return state
