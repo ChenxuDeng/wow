@@ -15,5 +15,9 @@ export {
     scrollDown,
     openSecondaryDropdown,
     closeSecondaryDropdown,
-    clickAway
+    clickAway,
+    gameMouseOver,
+    gameMouseLeave,
+    openSearchDropdown,
+    closeSearchDropdown
 } from './navigation'

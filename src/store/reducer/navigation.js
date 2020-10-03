@@ -10,7 +10,9 @@ const initialState={
     rightDrawer:false,
     scrolled:false,
     secondaryDropdown:false,
-    clickAway:false
+    clickAway:false,
+    gameHover:false,
+    searchDropdown:false
 }
 
 const navigation=(state=initialState,action)=>{
@@ -84,7 +86,10 @@ const navigation=(state=initialState,action)=>{
         case (actionType.SCROLL_UP):
             return {
                 ...state,
-                scrolled: true
+                scrolled: true,
+                game:false,
+                esports:false,
+                login:false
             }
         case (actionType.SCROLL_DOWN):
             return {
@@ -95,8 +100,8 @@ const navigation=(state=initialState,action)=>{
             return {
                 ...state,
                 clickAway:false,
-                secondaryDropdown:!state.secondaryDropdown
-
+                secondaryDropdown:!state.secondaryDropdown,
+                searchDropdown:false
             }
         case (actionType.CLOSE_SECONDARY_DROPDOWN):
             return {
@@ -109,6 +114,27 @@ const navigation=(state=initialState,action)=>{
             return {
                 ...state,
                 clickAway:true
+            }
+        case (actionType.GAME_MOUSEOVER):
+            return {
+                ...state,
+                gameHover:true
+            }
+        case (actionType.GAME_MOUSELEAVE):
+            return {
+                ...state,
+                gameHover:false
+            }
+        case (actionType.OPEN_SEARCH_DROPDOWN):
+            return {
+                ...state,
+                searchDropdown:!state.searchDropdown,
+                secondaryDropdown:false
+            }
+        case (actionType.CLOSE_SEARCH_DROPDOWN):
+            return {
+                ...state,
+                searchDropdown:false
             }
         default:
             return state

@@ -443,7 +443,7 @@ function Navigation(props) {
                 <PersonOutlineIcon style={{color:'#00aeff',cursor:'pointer'}} />
             </IconButton>
         </Toolbar>
-        <SwipeableDrawer open={props.leftDrawer} classes={{paper:classes.leftDrawer}} onClose={props.closeLeftDrawer}>
+        <SwipeableDrawer open={props.leftDrawer} classes={{paper:classes.leftDrawer}} onClose={props.closeLeftDrawer} onOpen={props.openLeftDrawer} disableScrollLock>
             <List style={{position:'relative'}}>
                 <ListItem style={{justifyContent:'center'}}>
                     <img src={leftDrawerLogo} alt='leftDrawerLogo' style={{width:'192px',marginTop:'3px'}}/>
@@ -484,7 +484,7 @@ function Navigation(props) {
                 <CloseIcon style={{position:'absolute',top:'12px',left:'12px',color:'#f8b700',cursor:'pointer'}} onClick={props.closeLeftDrawer}/>
             </List>
         </SwipeableDrawer>
-        <SwipeableDrawer open={props.rightDrawer} anchor={'right'} classes={{paper:classes.rightDrawer}} onClose={props.closeRightDrawer}>
+        <SwipeableDrawer open={props.rightDrawer} anchor={'right'} classes={{paper:classes.rightDrawer}} onClose={props.closeRightDrawer} onOpen={props.openRightDrawer} disableScrollLock>
             <List>
                 <ListItem style={{justifyContent:'center'}}>
                     <img src={blizzardLogo} alt='blizzardLogo' style={{width:'90px',marginTop:'3px',cursor:'pointer'}}/>
@@ -789,7 +789,6 @@ function Navigation(props) {
             {props.game?gameDropdown:null}
             {props.esports?esportsDropdown:null}
             {props.login?login:null}
-            <div className={classes.toolBar}/>
         </React.Fragment>
     );
 }

@@ -101,3 +101,27 @@ export const clickAway=()=>{
         type:actionType.CLICKAWAY
     }
 }
+
+export const gameMouseOver=()=>{
+    return{
+        type:actionType.GAME_MOUSEOVER
+    }
+}
+
+export const gameMouseLeave=()=>{
+    return{
+        type:actionType.GAME_MOUSELEAVE
+    }
+}
+
+export const openSearchDropdown=()=>{
+    return{
+        type:actionType.OPEN_SEARCH_DROPDOWN
+    }
+}
+
+export const closeSearchDropdown=()=>{
+    return{
+        type:actionType.CLOSE_SEARCH_DROPDOWN
+    }
+}

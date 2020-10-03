@@ -16,35 +16,22 @@ import {connect} from 'react-redux'
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import InputBase from "@material-ui/core/InputBase";
+import CloseIcon from '@material-ui/icons/Close';
+import footerImg from '../../assets/footer.png'
+import footerLeft from '../../assets/footerLeft.png'
+import footerRight from '../../assets/footerRight.png'
+import divider from '../../assets/divider.png'
+import buttonFrame1 from '../../assets/buttonFrame1.png'
+import buttonFrame2 from '../../assets/buttonFrame2.png'
+import buttonFrame3 from '../../assets/buttonFrame3.png'
+import buttonFrame4 from '../../assets/buttonFrame4.jpg'
+import buttonFrame5 from '../../assets/buttonFrame5.png'
 
 function MainPage(props) {
 
     const useStyle=makeStyles((theme)=>{
         return{
-            '@keyframes drop':{
-                '0%':{
-                    opacity:0,
-                    height:'0',
-                    overflow:'hidden'
-                },
-                '100%':{
-                    opacity:1,
-                    height:'375px',
-                    overflow:'hidden'
-                }
-            },
-            '@keyframes return':{
-                '0%':{
-                    opacity:1,
-                    height:'375px',
-                    overflow:'hidden'
-                },
-                '100%':{
-                    opacity:0,
-                    height:'0',
-                    overflow:'hidden'
-                }
-            },
             wrapper:{
                 position:'absolute',
                 backgroundImage:`url(${background})`,
@@ -189,6 +176,9 @@ function MainPage(props) {
                 fontSize:'17px',
                 fontWeight:'700',
                 lineHeight:'1.5em',
+                '&:hover':{
+                    filter:'brightness(200%) grayscale()',
+                },
                 '@media(max-width: 1450px)':{
                     fontSize:'14.4px'
                 },
@@ -201,7 +191,8 @@ function MainPage(props) {
                 backgroundSize:'400% 100%',
                 height:'11px',
                 width:'16px',
-                marginLeft:'3px'
+                marginLeft:'3px',
+                transition:'0.2s'
             },
             gameTabDivider:{
                 '&:before,&:after':{
@@ -610,6 +601,8 @@ function MainPage(props) {
             content:{
                 position:'absolute',
                 top:'914px',
+                marginTop:'-40px',
+                left:'0',
                 height:'1000px',
                 '@media(max-width: 1450px)':{
                     top:'890px'
@@ -696,7 +689,6 @@ function MainPage(props) {
                 maxWidth:'1536px',
                 margin:'0 auto',
                 transition:'0.3s',
-                animation:`$drop 0.3s ${theme.transitions.easing.easeInOut}`,
                 '@media(max-width: 960px)':{
                     display:'none'
                 }
@@ -739,9 +731,451 @@ function MainPage(props) {
                 maxWidth:'1536px',
                 margin:'0 auto',
                 transition:'0.3s',
-                animation:`$return 0.3s ${theme.transitions.easing.easeInOut}`,
                 '@media(max-width: 960px)':{
                     display:'none'
+                }
+            },
+            secondaryNavDropDownScrolled:{
+                width:'99.8%',
+                height:'375px',
+                position:'fixed',
+                top:'50px',
+                background:'linear-gradient(180deg,rgba(1,1,2,.97),rgba(21,13,6,.97))',
+                boxShadow:'0 0 10px rgba(0,0,0,.6)',
+                border:'1px solid #241505',
+                borderTop:'0',
+                overflow:'hidden',
+                borderRadius:'0',
+                left:'0',
+                transition:'0.3s',
+                '@media(max-width: 960px)':{
+                    display:'none'
+                }
+            },
+            secondaryNavDropDownHideScrolled:{
+                width:'99.8%',
+                height:'0px',
+                position:'fixed',
+                top:'50px',
+                background:'linear-gradient(180deg,rgba(1,1,2,.97),rgba(21,13,6,.97))',
+                boxShadow:'0 0 10px rgba(0,0,0,.6)',
+                borderLeft:'1px solid #241505',
+                borderRight:'1px solid #241505',
+                borderTop:'0',
+                overflow:'hidden',
+                borderRadius:'0',
+                left:'0',
+                margin:'0 auto',
+                transition:'0.3s',
+                '@media(max-width: 960px)':{
+                    display:'none'
+                }
+            },
+            tabTextHover:{
+                backgroundImage:'-webkit-linear-gradient(top,#efd100,#e2a233 19%,#f0c328 30%,#fff1a3 43%,#ffe13e 50%,#fff 51%,#fff)',
+                backgroundSize:'1em 2.5em',
+                backgroundPosition:'center 0',
+                WebkitBackgroundClip:'text',
+                WebkitTextFillColor:'transparent',
+                fontSize:'17px',
+                fontWeight:'700',
+                lineHeight:'1.5em',
+                filter:'brightness(200%) grayscale()',
+                transition:'0.3s',
+                '@media(max-width: 1450px)':{
+                    fontSize:'14.4px'
+                },
+                '@media(max-width: 1280px)':{
+                    fontSize:'12px'
+                },
+            },
+            expandMoreIconHover:{
+                backgroundImage:`url(${dropdown})`,
+                backgroundSize:'400% 100%',
+                height:'11px',
+                width:'16px',
+                marginLeft:'3px',
+                filter:'brightness(200%) grayscale()',
+                transition:'0.2s'
+            },
+            expandLessIcon:{
+                backgroundImage:`url(${dropdown})`,
+                backgroundSize:'400% 100%',
+                height:'11px',
+                width:'16px',
+                marginLeft:'3px',
+                filter:'brightness(200%) grayscale()',
+                transform:'rotateX(180deg)',
+                transition:'0.2s'
+            },
+            gameButtonOpened:{
+                height:'80px',
+                borderRadius:'0',
+                padding:'0 8px',
+                minWidth:'73px',
+                marginLeft:'1px',
+                transition:'0.3s',
+                background:'rgba(68,47,38,.5)',
+                '&:hover':{
+                    background:'rgba(68,47,38,.5)'
+                },
+                '&:before':{
+                    background:'rgba(68,47,38,.5)',
+                    bottom:'1px',
+                    content:'" "',
+                    position:'absolute',
+                    left:'0',
+                    top:'1px',
+                    width:'1px'
+                },
+                '&:after':{
+                    background:'rgba(68,47,38,.5)',
+                    bottom:'1px',
+                    content:'" "',
+                    position:'absolute',
+                    right:'0',
+                    top:'1px',
+                    width:'1px'
+                },
+                '@media(max-width: 1450px)':{
+                    height:'65px',
+                    minWidth:'65px'
+                },
+                '@media(max-width: 1280px)':{
+                    height:'60px',
+                    minWidth:'61px'
+                },
+                '@media(max-width: 1080px)':{
+                    height:'50px'
+                }
+            },
+            searchDropDown:{
+                width:'100%',
+                height:'342px',
+                background:'linear-gradient(180deg,rgba(1,1,2,.97),rgba(21,13,6,.97))',
+                boxShadow:'0 0 10px rgba(0,0,0,.6)',
+                border:'1px solid #241505',
+                borderTop:'0',
+                overflow:'hidden',
+                borderRadius:'0',
+                maxWidth:'1536px',
+                margin:'0 auto',
+                transition:'0.3s',
+                '@media(max-width: 960px)':{
+                    display:'none'
+                }
+            },
+            searchArea:{
+                display:'flex',
+                alignItems:'center',
+                margin:'0 auto',
+                width:'93.5%',
+                height:'51px',
+                background:'linear-gradient(180deg,rgba(1,1,2,.97),rgba(21,13,6,.97))',
+                border:'1px solid #352011',
+                transition:'0.3s',
+                borderRadius:'0',
+                marginTop:'45px'
+            },
+            InputBase:{
+                '&::placeholder':{
+                    color: '#f8b700',
+                    fontStyle:'italic',
+                    opacity:'0.9',
+                    fontSize:'14px'
+                }
+            },
+            searchDropDownHide:{
+                width:'100%',
+                height:'0',
+                background:'linear-gradient(180deg,rgba(1,1,2,.97),rgba(21,13,6,.97))',
+                boxShadow:'0 0 10px rgba(0,0,0,.6)',
+                border:'1px solid #241505',
+                borderBottom:'0',
+                borderTop:'0',
+                overflow:'hidden',
+                borderRadius:'0',
+                maxWidth:'1536px',
+                margin:'0 auto',
+                transition:'0.3s',
+                '@media(max-width: 960px)':{
+                    display:'none'
+                }
+            },
+            searchDropDownScrolled:{
+                width:'99.8%',
+                height:'342px',
+                position:'fixed',
+                top:'50px',
+                background:'linear-gradient(180deg,rgba(1,1,2,.97),rgba(21,13,6,.97))',
+                boxShadow:'0 0 10px rgba(0,0,0,.6)',
+                borderLeft:'1px solid #241505',
+                borderRight:'1px solid #241505',
+                borderTop:'0',
+                overflow:'hidden',
+                borderRadius:'0',
+                left:'0',
+                margin:'0 auto',
+                transition:'0.3s',
+                '@media(max-width: 960px)':{
+                    display:'none'
+                }
+            },
+            searchDropDownScrolledHide:{
+                width:'99.8%',
+                height:'0px',
+                position:'fixed',
+                top:'50px',
+                background:'linear-gradient(180deg,rgba(1,1,2,.97),rgba(21,13,6,.97))',
+                boxShadow:'0 0 10px rgba(0,0,0,.6)',
+                borderLeft:'1px solid #241505',
+                borderRight:'1px solid #241505',
+                borderTop:'0',
+                overflow:'hidden',
+                borderRadius:'0',
+                left:'0',
+                margin:'0 auto',
+                transition:'0.3s',
+                '@media(max-width: 960px)':{
+                    display:'none'
+                }
+            },
+            searchIcon:{
+                color:'#f8b700',
+                transform:'rotate(90deg)',
+                fontSize:'27px'
+            },
+            searchButtonOpened:{
+                height:'80px',
+                borderRadius:'0',
+                padding:'0 8px',
+                minWidth:'80px',
+                marginLeft:'1px',
+                transition:'0.3s',
+                background:'rgba(68,47,38,.5)',
+                '&:hover':{
+                    background:'rgba(68,47,38,.5)'
+                },
+                '&:before':{
+                    background:'rgba(68,47,38,.5)',
+                    bottom:'1px',
+                    content:'" "',
+                    position:'absolute',
+                    left:'0',
+                    top:'1px',
+                    width:'1px'
+                },
+                '&:after':{
+                    background:'rgba(68,47,38,.5)',
+                    bottom:'1px',
+                    content:'" "',
+                    position:'absolute',
+                    right:'0',
+                    top:'1px',
+                    width:'1px'
+                },
+                '@media(max-width: 1450px)':{
+                    height:'65px',
+                    minWidth:'66px'
+                },
+                '@media(max-width: 1280px)':{
+                    height:'60px',
+                    minWidth:'40px'
+                },
+                '@media(max-width: 1080px)':{
+                    height:'50px'
+                }
+            },
+            footer:{
+                width:'100%',
+                height:'74px',
+                position:'fixed',
+                bottom:'0',
+                left:'0',
+                backgroundImage:`url(${footerImg})`,
+                backgroundSize:'auto 74px',
+                backgroundPositionX:'50%',
+                zIndex:'2',
+                '&:before':{
+                    content:'""',
+                    backgroundImage:`url(${footerLeft})`,
+                    height:'27px',
+                    width:'173px',
+                    position:'absolute',
+                    top:'-13px',
+                    left:'-110px',
+                    backgroundPosition:'50% 50%'
+                },
+                '&:after':{
+                    content:'""',
+                    backgroundImage:`url(${footerRight})`,
+                    height:'27px',
+                    width:'173px',
+                    position:'absolute',
+                    top:'-13px',
+                    right:'-110px',
+                    backgroundPosition:'50% 50%'
+                },
+                display:'flex',
+                alignItems:'center',
+                justifyContent:'center'
+            },
+            footerTitle:{
+                fontSize:'17px',
+                color:'#ffcd6d',
+                backgroundImage:'-webkit-linear-gradient(top,#f8ebda,#f8ebda 50%,#ffd79f)',
+                paddingBottom:'6px',
+                WebkitTextFillColor:'transparent',
+                backgroundSize:'1em 2.4em',
+                lineHeight:'1',
+                backgroundPosition:'center 100%',
+                WebkitBackgroundClip:'text',
+                fontWeight:'600',
+                letterSpacing:'2px'
+            },
+            footerText:{
+                fontSize:'12px',
+                color:'white',
+                letterSpacing:'2px',
+                backgroundImage:'-webkit-linear-gradient(top,#fff,#fff 50%,#b9b9b9)',
+                WebkitTextFillColor:'transparent',
+                WebkitBackgroundClip:'text',
+                backgroundSize:'1em 2.4em',
+                fontWeight:'600',
+                backgroundPosition:'center 100%',
+            },
+            detailText:{
+                fontSize:'12px',
+                color:'#29a9cc',
+                fontWeight:'600',
+                letterSpacing:'2px',
+                marginTop:'8px',
+                marginLeft:'30px',
+                marginRight:'30px',
+                '&:before':{
+                    content:'""',
+                    position:'absolute',
+                    width:'4px',
+                    height:'74px',
+                    top:'-19px',
+                    left:'-12px',
+                    backgroundImage:`url(${divider})`,
+                    backgroundSize:'100% 100%',
+                    backgroundPosition:'50% 50%'
+                },
+                '&:after':{
+                    content:'""',
+                    position:'absolute',
+                    width:'4px',
+                    height:'74px',
+                    top:'-19px',
+                    right:'-12px',
+                    backgroundImage:`url(${divider})`,
+                    backgroundSize:'100% 100%',
+                    backgroundPosition:'50% 50%'
+                }
+            },
+            purchaseButton:{
+                marginTop:'8px',
+                marginLeft:'66px',
+                transition:'0.3s',
+                boxShadow:'0 0 20px 1px #000',
+                transform:'scaleY(-1)',
+                textDecoration:'none'
+            },
+            innerFrame:{
+                padding:'0 35px',
+                transition:'0.3s',
+                '&:before':{
+                    width:'calc(50% + 50px)',
+                    top:'-9px',
+                    left:'-35px',
+                    height:'85px',
+                    backgroundSize:'auto 85px',
+                    backgroundImage:`url(${buttonFrame2})`,
+                    transition:'0.3s',
+                    content:'""',
+                    position:'absolute',
+                    background:`transparent url(${buttonFrame1}) 100% no-repeat`,
+                    zIndex:'1',
+                    transform:'scaleX(-1)',
+                    backgroundPosition:'100% 50%',
+                    backgroundAttachment:'scroll',
+                    backgroundClip:'border-box',
+                    backgroundOrigin:'padding-box'
+                },
+                '&:after':{
+                    width:'calc(50% + 50px)',
+                    top:'-9px',
+                    right:'-35px',
+                    height:'85px',
+                    backgroundSize:'auto 85px',
+                    backgroundImage:`url(${buttonFrame2})`,
+                    transition:'0.3s',
+                    content:'""',
+                    position:'absolute',
+                    backgroundPosition:'100% 50%',
+                    background:`transparent url(${buttonFrame1}) 100% no-repeat`,
+                    zIndex:'1',
+                }
+            },
+            label:{
+                fontSize:'14.4px',
+                textShadow:'0 2px 0 #000, 1px 0 9px #000, 0 1px 9px #000, -1px 0 9px #000, 0 -1px 9px #000, 1px 0 9px #000, 0 1px 9px #000',
+                color:'#fff',
+                letterSpacing:'4px',
+                whiteSpace:'nowrap',
+                lineHeight:'64px',
+                fontWeight:'400',
+                position:'relative',
+                transform:'scaleY(-1)',
+                '&:before':{
+                    content:'""',
+                    height:'100%',
+                    width:'100%',
+                    position:'absolute',
+                    top:'0',
+                    left:'0',
+                    background:`transparent url(${buttonFrame5}) 50% no-repeat`,
+                    transition:'0.3s',
+                }
+            },
+            outerFrame:{
+                position:'relative',
+                '&:before':{
+                    animationPlayState:'running',
+                    backgroundRepeat:'repeat-x',
+                    backgroundImage:`url(${buttonFrame3})`,
+                    WebkitAnimationPlayState:'running',
+                    transition:'0.3s',
+                    content:'""',
+                    width:'100%',
+                    height:'100%',
+                    position:'absolute',
+                    left:'0',
+                    top:'0',
+                    background:`transparent url(${buttonFrame4}) 50% 50% no-repeat`,
+                    backgroundSize:'665px auto',
+                    borderRadius:'20px'
+                },
+                '&:after':{
+                    transition:'1s',
+                    opacity:'0',
+                    animation:'anima-background 20s linear 0s infinite',
+                    WebkitAnimation:'anima-background 20s linear 0s infinite',
+                    WebkitAnimationPlayState:'running',
+                    animationPlayState:'running',
+                    backgroundRepeat:'repeat-x',
+                    backgroundImage:`url(${buttonFrame3})`,
+                    content:'""',
+                    width:'100%',
+                    height:'100%',
+                    position:'absolute',
+                    left:'0',
+                    top:'0',
+                    background:`transparent url(${buttonFrame4}) 50% 50% no-repeat`,
+                    backgroundSize:'665px auto',
+                    borderRadius:'20px'
                 }
             }
         }
@@ -751,8 +1185,33 @@ function MainPage(props) {
     const theme=useTheme()
     const smMatch=useMediaQuery(theme.breakpoints.down('sm'))
 
+    let paperStyle=props.secondaryDropdown?classes.secondaryNavDropDown:classes.secondaryNavDropDownHide
+    if(props.scrolled){
+        paperStyle=props.secondaryDropdown?classes.secondaryNavDropDownScrolled:classes.secondaryNavDropDownHideScrolled
+    }
+
+    let gameTextStyle=props.gameHover?classes.tabTextHover:classes.tabText
+    if(props.secondaryDropdown){
+        gameTextStyle=classes.tabTextHover
+    }
+
+    let gameIconStyle=props.gameHover?classes.expandMoreIconHover:classes.expandMoreIcon
+    if(props.secondaryDropdown){
+        gameIconStyle=classes.expandLessIcon
+    }
+
+    let gameButtonStyle={background:'rgba(68,47,38,.5)'}
+
+    let searchDropDownStyle=props.searchDropdownState?classes.searchDropDown:classes.searchDropDownHide
+    if(props.scrolled){
+        searchDropDownStyle=props.searchDropdownState?classes.searchDropDownScrolled:classes.searchDropDownScrolledHide
+    }
+
+    let searchButtonStyle={background:'rgba(68,47,38,.5)'}
+
     const secondaryDropdown=<React.Fragment>
-            <Paper className={classes.secondaryNavDropDown}>
+        <ClickAwayListener onClickAway={props.closeSecondaryDropdown}>
+            <Paper className={paperStyle}>
                 <Grid container style={{width:'95%',margin:'0 auto',marginTop:'36px'}} spacing={3}>
                     <Grid item style={{width:'25%'}}>
                         <div className={classes.dropdownTitle}>
@@ -839,6 +1298,7 @@ function MainPage(props) {
                     </Grid>
                 </Grid>
             </Paper>
+        </ClickAwayListener>
     </React.Fragment>
 
     const secondaryNavigation=<React.Fragment>
@@ -849,11 +1309,14 @@ function MainPage(props) {
                 <div className={props.scrolled?classes.gameTabDividerScrolled:classes.gameTabDivider}>
                     <Button className={props.scrolled?classes.gameButtonScrolled:classes.gameButton}
                             disableRipple
-                            onClick={props.openSecondaryDropdown}
+                            onClick={props.secondaryDropdown?props.openSecondaryDropdown:()=>setTimeout(props.openSecondaryDropdown)}
+                            onMouseOver={props.gameMouseOver}
+                            onMouseLeave={props.gameMouseLeave}
+                            style={props.secondaryDropdown?gameButtonStyle:null}
                     >
-                        <div style={{display:'flex',alignItems:'center'}} className={classes.tabText}>
+                        <div style={{display:'flex',alignItems:'center'}} className={gameTextStyle}>
                             <span>游戏</span>
-                            <div className={classes.expandMoreIcon}></div>
+                            <div className={gameIconStyle}></div>
                         </div>
                     </Button>
                 </div>
@@ -886,9 +1349,13 @@ function MainPage(props) {
                     </Button>
                 </div>
                 <div className={classes.gameTabDivider} style={{marginLeft:'auto'}}>
-                    <Button className={props.scrolled?classes.searchButtonScrolled:classes.searchButton} disableRipple >
+                    <Button className={props.scrolled?classes.searchButtonScrolled:classes.searchButton}
+                            disableRipple
+                            onClick={props.searchDropdownState?props.openSearchDropdown:()=>{setTimeout(props.openSearchDropdown)}}
+                            style={props.searchDropdownState?searchButtonStyle:null}
+                    >
                         <div style={{display:'flex',alignItems:'center'}} className={classes.tabText}>
-                            <SearchIcon style={{color:'#f8b700',transform:'rotate(90deg)',fontSize:'27px'}}/>
+                            {props.searchDropdownState?<CloseIcon style={{fontSize:'25px',color:'white'}}/>:<SearchIcon className={classes.searchIcon}/>}
                         </div>
                     </Button>
                 </div>
@@ -921,7 +1388,97 @@ function MainPage(props) {
         <React.Fragment>
                 <div className={classes.wrapper}>
                     {smMatch?null:secondaryNavigation}
-                    {props.secondaryDropdown?secondaryDropdown:null}
+                    {secondaryDropdown}
+                    <ClickAwayListener onClickAway={props.closeSearchDropdown}>
+                        <Paper className={searchDropDownStyle}>
+                            <Paper className={classes.searchArea}>
+                                <SearchIcon style={{color:'#f8b700',transform:'rotate(90deg)',fontSize:'27px',marginLeft:'16px'}}/>
+                                <InputBase style={{width:'100%',color:'white',marginLeft:'10px'}} placeholder={'搜索内容'} inputProps={{className:classes.InputBase}}/>
+                            </Paper>
+                            <Grid container style={{width:'95%',margin:'0 auto',marginTop:'36px'}} spacing={3}>
+                                <Grid item style={{width:'25%'}}>
+                                    <div className={classes.dropdownTitle}>
+                                        资源
+                                    </div>
+                                    <div>
+                                        <div className={classes.dropdownContent}>
+                                            新玩家
+                                        </div>
+                                        <div className={classes.dropdownContent}>
+                                            回家玩家
+                                        </div>
+                                        <div className={classes.dropdownContent}>
+                                            天赋模拟器
+                                        </div>
+                                        <div className={classes.dropdownContent}>
+                                            服务器状态
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item style={{width:'25%'}}>
+                                    <div className={classes.dropdownTitle}>
+                                        新闻
+                                    </div>
+                                    <div>
+                                        <div className={classes.dropdownContent}>
+                                            最近更新
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item style={{width:'25%'}}>
+                                    <div className={classes.dropdownTitle}>
+                                        游戏玩法
+                                    </div>
+                                    <div>
+                                        <div className={classes.dropdownContent}>
+                                            种族
+                                        </div>
+                                        <div className={classes.dropdownContent}>
+                                            职业
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item style={{width:'25%'}}>
+                                    <div className={classes.dropdownTitle}>
+                                        论坛
+                                    </div>
+                                    <div>
+                                        <div className={classes.dropdownContent} style={{display:'flex'}}>
+                                            支持
+                                        </div>
+                                        <div className={classes.dropdownContent}>
+                                            社区
+                                        </div>
+                                        <div className={classes.dropdownContent}>
+                                            网页和移动端反馈
+                                        </div>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                    </ClickAwayListener>
+                    <div className={classes.footer}>
+                        <div style={{textAlign:'center',marginTop:'8px'}}>
+                            <div className={classes.footerTitle}>
+                                《暗影国度》
+                            </div>
+                            <div className={classes.footerText}>
+                                数字礼包
+                            </div>
+                        </div>
+                        <Button className={classes.detailText} disableRipple>
+                            了解详情
+                        </Button>
+                        <a href={'#'} className={classes.purchaseButton}>
+                            <div className={classes.outerFrame}>
+                                <div className={classes.innerFrame}>
+                                    <div className={classes.label}>
+                                        立即购买
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                     <div className={classes.title}>
                         <span className={classes.titleText}>观看“暗影国度”动画短片彼岸之地：雷文德斯</span>
                         <div className={classes.titleWrapper}>
@@ -941,7 +1498,9 @@ const mapStateToProps=(state)=>{
     return{
         scrolled:state.navigation.scrolled,
         secondaryDropdown:state.navigation.secondaryDropdown,
-        clickAway:state.navigation.clickAway
+        clickAway:state.navigation.clickAway,
+        gameHover:state.navigation.gameHover,
+        searchDropdownState:state.navigation.searchDropdown
     }
 }
 
@@ -951,7 +1510,10 @@ const mapDispatchToProps=(dispatch)=>{
         scrollDown:()=>{dispatch(action.scrollDown())},
         openSecondaryDropdown:()=>{dispatch(action.openSecondaryDropdown())},
         closeSecondaryDropdown:()=>{dispatch(action.closeSecondaryDropdown())},
-        clickAwayHandler:()=>{dispatch(action.clickAway())}
+        gameMouseOver:()=>{dispatch(action.gameMouseOver())},
+        gameMouseLeave:()=>{dispatch(action.gameMouseLeave())},
+        openSearchDropdown:()=>{dispatch(action.openSearchDropdown())},
+        closeSearchDropdown:()=>{dispatch(action.closeSearchDropdown())}
     }
 }
 
