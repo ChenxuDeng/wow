@@ -27,11 +27,22 @@ import buttonFrame2 from '../../assets/buttonFrame2.png'
 import buttonFrame3 from '../../assets/buttonFrame3.png'
 import buttonFrame4 from '../../assets/buttonFrame4.jpg'
 import buttonFrame5 from '../../assets/buttonFrame5.png'
+import buttonFrame6 from '../../assets/buttonFrame6.png'
+import buttonFrame7 from '../../assets/buttonFrame7.jpg'
+import contentBackground from '../../assets/contentBackground.jpg'
 
 function MainPage(props) {
 
     const useStyle=makeStyles((theme)=>{
         return{
+            '@keyframes anima-background':{
+                '0%':{
+                    backgroundPosition: '248px 50%, 0 50%, 0 50%'
+                },
+                '100%':{
+                    backgroundPosition: '500% 50%, -1330px 50%, -665px 50%'
+                }
+            },
             wrapper:{
                 position:'absolute',
                 backgroundImage:`url(${background})`,
@@ -409,7 +420,7 @@ function MainPage(props) {
                 alignItems:'center',
                 transition:'0.3s',
                 boxShadow:'0 0 10px rgba(0,0,0,.6)',
-                zIndex:1200,
+                zIndex:theme.zIndex.appBar+1,
                 '&:before':{
                     background:'rgba(68,47,38,.5)',
                     content:'""',
@@ -598,12 +609,16 @@ function MainPage(props) {
                     marginLeft:'0'
                 },
             },
-            content:{
+            contentBackground:{
                 position:'absolute',
                 top:'914px',
                 marginTop:'-40px',
                 left:'0',
-                height:'1000px',
+                backgroundImage:`url(${contentBackground})`,
+                backgroundPosition:'top',
+                backgroundSize:'100%',
+                width:'100%',
+
                 '@media(max-width: 1450px)':{
                     top:'890px'
                 },
@@ -1018,7 +1033,10 @@ function MainPage(props) {
                 },
                 display:'flex',
                 alignItems:'center',
-                justifyContent:'center'
+                justifyContent:'center',
+                [theme.breakpoints.down('sm')]:{
+                    height:'64px'
+                }
             },
             footerTitle:{
                 fontSize:'17px',
@@ -1031,7 +1049,10 @@ function MainPage(props) {
                 backgroundPosition:'center 100%',
                 WebkitBackgroundClip:'text',
                 fontWeight:'600',
-                letterSpacing:'2px'
+                letterSpacing:'2px',
+                [theme.breakpoints.down('sm')]:{
+                    fontSize:'14.4px'
+                }
             },
             footerText:{
                 fontSize:'12px',
@@ -1042,7 +1063,7 @@ function MainPage(props) {
                 WebkitBackgroundClip:'text',
                 backgroundSize:'1em 2.4em',
                 fontWeight:'600',
-                backgroundPosition:'center 100%',
+                backgroundPosition:'center 100%'
             },
             detailText:{
                 fontSize:'12px',
@@ -1073,15 +1094,23 @@ function MainPage(props) {
                     backgroundImage:`url(${divider})`,
                     backgroundSize:'100% 100%',
                     backgroundPosition:'50% 50%'
+                },
+                '&:hover':{
+                    color:'white'
+                },
+                [theme.breakpoints.down('sm')]:{
+                    display:'none'
                 }
             },
             purchaseButton:{
-                marginTop:'8px',
-                marginLeft:'66px',
+                marginTop:'6px',
+                marginLeft:'30px',
                 transition:'0.3s',
-                boxShadow:'0 0 20px 1px #000',
                 transform:'scaleY(-1)',
-                textDecoration:'none'
+                textDecoration:'none',
+                [theme.breakpoints.down('sm')]:{
+                    marginLeft:'16px'
+                }
             },
             innerFrame:{
                 padding:'0 35px',
@@ -1097,12 +1126,19 @@ function MainPage(props) {
                     content:'""',
                     position:'absolute',
                     background:`transparent url(${buttonFrame1}) 100% no-repeat`,
-                    zIndex:'1',
                     transform:'scaleX(-1)',
                     backgroundPosition:'100% 50%',
                     backgroundAttachment:'scroll',
                     backgroundClip:'border-box',
-                    backgroundOrigin:'padding-box'
+                    backgroundOrigin:'padding-box',
+                    zIndex:'1',
+                    [theme.breakpoints.down('sm')]:{
+                        width:'calc(50% + 18px)',
+                        top:'-6px',
+                        left:'-18px',
+                        height:'62px',
+                        backgroundSize:'auto 62px'
+                    }
                 },
                 '&:after':{
                     width:'calc(50% + 50px)',
@@ -1117,7 +1153,20 @@ function MainPage(props) {
                     backgroundPosition:'100% 50%',
                     background:`transparent url(${buttonFrame1}) 100% no-repeat`,
                     zIndex:'1',
-                }
+                    [theme.breakpoints.down('sm')]:{
+                        width:'calc(50% + 18px)',
+                        top:'-6px',
+                        right:'-18px',
+                        height:'62px',
+                        backgroundSize:'auto 62px'
+                    }
+                },
+                '&:hover:before':{
+                    filter:'contrast(1.15)'
+                },
+                '&:hover:after':{
+                    filter:'contrast(1.15)'
+                },
             },
             label:{
                 fontSize:'14.4px',
@@ -1129,6 +1178,7 @@ function MainPage(props) {
                 fontWeight:'400',
                 position:'relative',
                 transform:'scaleY(-1)',
+                zIndex:'2',
                 '&:before':{
                     content:'""',
                     height:'100%',
@@ -1138,6 +1188,16 @@ function MainPage(props) {
                     left:'0',
                     background:`transparent url(${buttonFrame5}) 50% no-repeat`,
                     transition:'0.3s',
+                    backgroundImage:`url(${buttonFrame6})`,
+                    backgroundPosition:'bottom',
+                    backgroundSize:'auto 65px',
+                    [theme.breakpoints.down('sm')]:{
+                        backgroundSize:'auto 46px'
+                    }
+                },
+                [theme.breakpoints.down('sm')]:{
+                    fontSize:'13px',
+                    lineHeight:'46px'
                 }
             },
             outerFrame:{
@@ -1145,7 +1205,7 @@ function MainPage(props) {
                 '&:before':{
                     animationPlayState:'running',
                     backgroundRepeat:'repeat-x',
-                    backgroundImage:`url(${buttonFrame3})`,
+                    backgroundImage:`url(${buttonFrame3}),url(${buttonFrame7})`,
                     WebkitAnimationPlayState:'running',
                     transition:'0.3s',
                     content:'""',
@@ -1161,12 +1221,11 @@ function MainPage(props) {
                 '&:after':{
                     transition:'1s',
                     opacity:'0',
-                    animation:'anima-background 20s linear 0s infinite',
-                    WebkitAnimation:'anima-background 20s linear 0s infinite',
+                    animation:`$anima-background 20s linear 0s infinite`,
                     WebkitAnimationPlayState:'running',
                     animationPlayState:'running',
                     backgroundRepeat:'repeat-x',
-                    backgroundImage:`url(${buttonFrame3})`,
+                    backgroundImage:`url(${buttonFrame3}),url(${buttonFrame7})`,
                     content:'""',
                     width:'100%',
                     height:'100%',
@@ -1176,6 +1235,20 @@ function MainPage(props) {
                     background:`transparent url(${buttonFrame4}) 50% 50% no-repeat`,
                     backgroundSize:'665px auto',
                     borderRadius:'20px'
+                },
+                '&:hover:after':{
+                    opacity:'1',
+                    filter:'brightness(1.3)'
+                }
+            },
+            smallMatchText:{
+                fontSize:'12px',
+                color:'#29a9cc',
+                fontWeight:'600',
+                letterSpacing:'2px',
+                cursor:'pointer',
+                '&:hover':{
+                    color:'white'
                 }
             }
         }
@@ -1386,90 +1459,93 @@ function MainPage(props) {
 
     return (
         <React.Fragment>
-                <div className={classes.wrapper}>
-                    {smMatch?null:secondaryNavigation}
-                    {secondaryDropdown}
-                    <ClickAwayListener onClickAway={props.closeSearchDropdown}>
-                        <Paper className={searchDropDownStyle}>
-                            <Paper className={classes.searchArea}>
-                                <SearchIcon style={{color:'#f8b700',transform:'rotate(90deg)',fontSize:'27px',marginLeft:'16px'}}/>
-                                <InputBase style={{width:'100%',color:'white',marginLeft:'10px'}} placeholder={'搜索内容'} inputProps={{className:classes.InputBase}}/>
-                            </Paper>
-                            <Grid container style={{width:'95%',margin:'0 auto',marginTop:'36px'}} spacing={3}>
-                                <Grid item style={{width:'25%'}}>
-                                    <div className={classes.dropdownTitle}>
-                                        资源
-                                    </div>
-                                    <div>
-                                        <div className={classes.dropdownContent}>
-                                            新玩家
-                                        </div>
-                                        <div className={classes.dropdownContent}>
-                                            回家玩家
-                                        </div>
-                                        <div className={classes.dropdownContent}>
-                                            天赋模拟器
-                                        </div>
-                                        <div className={classes.dropdownContent}>
-                                            服务器状态
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item style={{width:'25%'}}>
-                                    <div className={classes.dropdownTitle}>
-                                        新闻
-                                    </div>
-                                    <div>
-                                        <div className={classes.dropdownContent}>
-                                            最近更新
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item style={{width:'25%'}}>
-                                    <div className={classes.dropdownTitle}>
-                                        游戏玩法
-                                    </div>
-                                    <div>
-                                        <div className={classes.dropdownContent}>
-                                            种族
-                                        </div>
-                                        <div className={classes.dropdownContent}>
-                                            职业
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item style={{width:'25%'}}>
-                                    <div className={classes.dropdownTitle}>
-                                        论坛
-                                    </div>
-                                    <div>
-                                        <div className={classes.dropdownContent} style={{display:'flex'}}>
-                                            支持
-                                        </div>
-                                        <div className={classes.dropdownContent}>
-                                            社区
-                                        </div>
-                                        <div className={classes.dropdownContent}>
-                                            网页和移动端反馈
-                                        </div>
-                                    </div>
-                                </Grid>
-                            </Grid>
+            <div style={{padding:'0 30px'}}>
+                {smMatch?null:secondaryNavigation}
+                {secondaryDropdown}
+                <ClickAwayListener onClickAway={props.closeSearchDropdown}>
+                    <Paper className={searchDropDownStyle}>
+                        <Paper className={classes.searchArea}>
+                            <SearchIcon style={{color:'#f8b700',transform:'rotate(90deg)',fontSize:'27px',marginLeft:'16px'}}/>
+                            <InputBase style={{width:'100%',color:'white',marginLeft:'10px'}} placeholder={'搜索内容'} inputProps={{className:classes.InputBase}}/>
                         </Paper>
-                    </ClickAwayListener>
+                        <Grid container style={{width:'95%',margin:'0 auto',marginTop:'36px'}} spacing={3}>
+                            <Grid item style={{width:'25%'}}>
+                                <div className={classes.dropdownTitle}>
+                                    资源
+                                </div>
+                                <div>
+                                    <div className={classes.dropdownContent}>
+                                        新玩家
+                                    </div>
+                                    <div className={classes.dropdownContent}>
+                                        回家玩家
+                                    </div>
+                                    <div className={classes.dropdownContent}>
+                                        天赋模拟器
+                                    </div>
+                                    <div className={classes.dropdownContent}>
+                                        服务器状态
+                                    </div>
+                                </div>
+                            </Grid>
+                            <Grid item style={{width:'25%'}}>
+                                <div className={classes.dropdownTitle}>
+                                    新闻
+                                </div>
+                                <div>
+                                    <div className={classes.dropdownContent}>
+                                        最近更新
+                                    </div>
+                                </div>
+                            </Grid>
+                            <Grid item style={{width:'25%'}}>
+                                <div className={classes.dropdownTitle}>
+                                    游戏玩法
+                                </div>
+                                <div>
+                                    <div className={classes.dropdownContent}>
+                                        种族
+                                    </div>
+                                    <div className={classes.dropdownContent}>
+                                        职业
+                                    </div>
+                                </div>
+                            </Grid>
+                            <Grid item style={{width:'25%'}}>
+                                <div className={classes.dropdownTitle}>
+                                    论坛
+                                </div>
+                                <div>
+                                    <div className={classes.dropdownContent} style={{display:'flex'}}>
+                                        支持
+                                    </div>
+                                    <div className={classes.dropdownContent}>
+                                        社区
+                                    </div>
+                                    <div className={classes.dropdownContent}>
+                                        网页和移动端反馈
+                                    </div>
+                                </div>
+                            </Grid>
+                        </Grid>
+                    </Paper>
+                </ClickAwayListener>
+                <div className={classes.wrapper}>
                     <div className={classes.footer}>
                         <div style={{textAlign:'center',marginTop:'8px'}}>
                             <div className={classes.footerTitle}>
                                 《暗影国度》
                             </div>
-                            <div className={classes.footerText}>
-                                数字礼包
+                            <div className={smMatch?classes.smallMatchText:classes.footerText}>
+                                {smMatch?'了解详情':'数字礼包'}
                             </div>
                         </div>
                         <Button className={classes.detailText} disableRipple>
                             了解详情
                         </Button>
-                        <a href={'#'} className={classes.purchaseButton}>
+                        <Button className={classes.purchaseButton}
+                                disableRipple
+                        >
                             <div className={classes.outerFrame}>
                                 <div className={classes.innerFrame}>
                                     <div className={classes.label}>
@@ -1477,7 +1553,7 @@ function MainPage(props) {
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </Button>
                     </div>
                     <div className={classes.title}>
                         <span className={classes.titleText}>观看“暗影国度”动画短片彼岸之地：雷文德斯</span>
@@ -1486,8 +1562,11 @@ function MainPage(props) {
                             <div className={classes.titleTextContent}>由<span style={{color:'#f8b700'}}>魔兽世界运营团队</span>于2020年9月18日 01:04 CST发布</div>
                         </div>
                     </div>
-                <div className={classes.content}>
-                    123
+                    <div className={classes.contentBackground}>
+                        <div>
+                            123
+                        </div>
+                    </div>
                 </div>
             </div>
         </React.Fragment>
@@ -1500,7 +1579,9 @@ const mapStateToProps=(state)=>{
         secondaryDropdown:state.navigation.secondaryDropdown,
         clickAway:state.navigation.clickAway,
         gameHover:state.navigation.gameHover,
-        searchDropdownState:state.navigation.searchDropdown
+        searchDropdownState:state.navigation.searchDropdown,
+        purchaseHover:state.navigation.purchaseHover,
+        animationOpacity:state.navigation.animationOpacity
     }
 }
 
