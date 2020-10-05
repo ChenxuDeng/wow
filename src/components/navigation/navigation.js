@@ -317,6 +317,12 @@ function Navigation(props) {
                 [theme.breakpoints.down('sm')]:{
                     padding:'0'
                 }
+            },
+            appBar:{
+                position:'relative',
+                [theme.breakpoints.down('sm')]:{
+                    position:'fixed'
+                }
             }
         }
     })
@@ -781,7 +787,7 @@ function Navigation(props) {
 
     return (
         <React.Fragment>
-            <AppBar elevation={0} position={'relative'}>
+            <AppBar elevation={0} position={'relative'} className={classes.appBar}>
                 <Container maxWidth={'lg'} classes={{maxWidthLg:classes.container}}>
                     {smMatch?smNav:lgNav}
                 </Container>
