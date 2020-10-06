@@ -31,11 +31,7 @@ import buttonFrame6 from '../../assets/buttonFrame6.png'
 import buttonFrame7 from '../../assets/buttonFrame7.jpg'
 import contentBackground from '../../assets/contentBackground.jpg'
 import Container from "@material-ui/core/Container";
-import video1 from '../../assets/video1.mp4'
 import contentDivider from '../../assets/contentDivider.png'
-import video2 from '../../assets/video2.mp4'
-import video3 from '../../assets/video3.mp4'
-import video4 from '../../assets/video4.mp4'
 import LocalActivityIcon from '@material-ui/icons/LocalActivity';
 import bottomBackground from '../../assets/bottomBackground.jpg'
 import buttonIcon1 from '../../assets/bottomIcon1.gif'
@@ -1819,7 +1815,7 @@ function MainPage(props) {
                                     雷文德斯主宰者、德纳修斯大帝在百忙之中抽空安抚了自己的子民。他承诺说，虽然起源不明的心能枯竭依旧荼毒着雷文德斯，但是他采取的措施将确保这个国度的长治久安——只要他们的信仰永远坚定不移。
                                 </div>
                                 <div style={{textAlign:'center',marginTop:'20px'}}>
-                                    <video src={video1}
+                                    <video src={'https://blz-videos.nosdn.127.net/1/World of Warcraft/cfc1e3c38e2f95e70f41d62e97ad7952.mp4'}
                                            style={{width:'98%'}}
                                            poster={'https://cms.cnc.blzstatic.cn/cms/gallery/4946UAG5OJ041598553600637.jpg'}
                                            preload
@@ -1844,7 +1840,7 @@ function MainPage(props) {
                                     在炽蓝仙野的森林中，守护者们照看着林地，呵护着静待重生的自然之灵。但是在心能枯竭之际，当一名守护者奋力保护垂死的林地时，他面临着两难的抉择。
                                 </div>
                                 <div style={{textAlign:'center',marginTop:'20px'}}>
-                                    <video src={video2}
+                                    <video src={'https://blz-videos.nosdn.127.net/1/World of Warcraft/0e892b670db78622050eae72719481bbsal.mp4'}
                                            style={{width:'98%'}}
                                            poster={'https://cms.cnc.blzstatic.cn/cms/gallery/IFWWJIJL0M1J1598553600667.jpg'}
                                            preload
@@ -1869,7 +1865,7 @@ function MainPage(props) {
                                     霜狼氏族的兽人德拉卡并非是天生的战士，而是后天锤炼而来。连绵的战火铸就了玛卓克萨斯的大军，也让德拉卡明白了，没有什么是一成不变的——甚至包括她自己。
                                 </div>
                                 <div style={{textAlign:'center',marginTop:'20px'}}>
-                                    <video src={video3}
+                                    <video src={'https://blz-videos.nosdn.127.net/1/World of Warcraft/2633af9998cd2ea27fd36cc4f66eeaef.mp4'}
                                            style={{width:'98%'}}
                                            poster={'https://cms.cnc.blzstatic.cn/cms/gallery/FXK7JLEWQ1N51598553600576.jpg'}
                                            preload
@@ -1894,7 +1890,7 @@ function MainPage(props) {
                                     光明使者乌瑟尔，白银之手骑士团的圣骑士，最终死于非命……但他的奉献之旅还未完结。乌瑟尔来到冥世后，德沃丝——晋升堡垒的一名圣杰——庇护着他。而后，她发现，有些凡间的伤口，比她想的要深得多。
                                 </div>
                                 <div style={{textAlign:'center',marginTop:'20px'}}>
-                                    <video src={video4}
+                                    <video src={'https://blz-videos.nosdn.127.net/1/World of Warcraft/c0426201be3cc011dc90e9e8e46dac42.mp4'}
                                            style={{width:'98%'}}
                                            poster={'https://cms.cnc.blzstatic.cn/cms/gallery/9k/9KXIM4BXBCKH1598516770262.jpg'}
                                            preload
